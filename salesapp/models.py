@@ -18,3 +18,13 @@ class Customers(models.Model):
 
     class Meta:
         verbose_name_plural = 'Customers'
+
+class Sellers(models.Model):
+    name = models.OneToOneField(User, related_name='sellerName', on_delete=models.CASCADE)
+    salesrep_number = models.IntegerField(blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Sellers'
+
+    def __str__(self):
+        return self.name.first_name + ' ' + self.name.last_name

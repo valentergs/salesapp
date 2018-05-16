@@ -1,0 +1,14 @@
+/* INCLUDES/NAV.HTML */
+span.navbar-item a{
+  font-size: 12px;
+}
+
+/* INDEX.HTML */
+div.card{
+  margin-bottom: 20px;
+}
+
+/* INCLUDES/FOOTER.HTML */
+#footer p {
+  font-size: 14px;
+}

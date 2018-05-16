@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{ cust_detail.sold_to_name }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  {% if cust_detail %}
+    {# <p>Customer: {{ cust_detail.sold_to_name }}</p> #}
+    <p>Sold-to:{{ cust_detail.sold_to_number }}</p>
+    <p>Country: {{ cust_detail.country }}</p>
+    <p>Seller: {{ cust_detail.seller_name }}</p>
+    <p>Active? {{ cust_detail.is_active }}</p>
+  {% else %}
+    <p>No customers details found.</p>
+  {% endif%}
+</div>
+
+<div class="container">
+  <p>
+    <a class='btn btn-warning' href="{% url 'url_cust_update' pk=cust_detail.pk %}">Update</a>
+  </p>
+</div>
+
+{% endblock %}

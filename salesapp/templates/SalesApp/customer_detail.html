@@ -4,17 +4,19 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h1>{{ cust_detail.sold_to_name }}</h1>
+    <h1>{{ cust_detail.soldToName }}</h1>
   </div>
 </div>
 
 <div class="container">
   {% if cust_detail %}
     {# <p>Customer: {{ cust_detail.sold_to_name }}</p> #}
-    <p>Sold-to:{{ cust_detail.sold_to_number }}</p>
-    <p>Country: {{ cust_detail.country }}</p>
-    <p>Seller: {{ cust_detail.seller_name }}</p>
-    <p>Active? {{ cust_detail.is_active }}</p>
+    <p>Sold-to:{{ cust_detail.soldToNumber }}</p>
+    <p>Country: {{ cust_detail.shipToCountry }}</p>
+    <p>City: {{ cust_detail.shipToCity }}</p>
+    <p>Seller: {{ cust_detail.sellerName }}</p>
+    <p>CSMC: {{ cust_detail.cmscName }}</p>
+    <p>Product: {{ cust_detail.products }}</p>
   {% else %}
     <p>No customers details found.</p>
   {% endif%}

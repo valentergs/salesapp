@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 class Customers(models.Model):
     soldToNumber = models.CharField(max_length=10)
@@ -12,6 +14,9 @@ class Customers(models.Model):
     sellerName = models.CharField(max_length=80)
     cmscNumber = models.CharField(max_length=10)
     cmscName = models.CharField(max_length=80)
+
+    def get_absolute_url(self):
+        return reverse('url_cust_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.soldToName

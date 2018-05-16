@@ -16,7 +16,7 @@
 
         {% for x in cust_list %}
           <li class="list-group-item">
-            <a href="{{ x.get_absolute_url }}">{{ x.sold_to_name }}</a>
+            <a href="{{ x.get_absolute_url }}">{{ x.soldToName|title }}</a>
           </li>
         {% endfor %}
 

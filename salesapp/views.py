@@ -45,7 +45,7 @@ class CustomersListView(ListView):
 
     def get_queryset(self):
         qs = super(CustomersListView, self).get_queryset()
-        return qs.filter(seller_name=self.request.user)
+        return qs.filter(sellerNumber=self.request.user)
 
 class CustomersDetailView(DetailView):
     model = Customers

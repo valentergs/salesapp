@@ -14,6 +14,7 @@ class Customers(models.Model):
     sellerName = models.CharField(max_length=80)
     cmscNumber = models.CharField(max_length=10)
     cmscName = models.CharField(max_length=80)
+    group = models.CharField(max_length=100, blank=True)
 
     def get_absolute_url(self):
         return reverse('url_cust_detail', kwargs={'pk': self.pk})

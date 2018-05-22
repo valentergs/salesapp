@@ -9,7 +9,35 @@
   </div>
 </div>
 
-{% if cust_list %}
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Sold-To</th>
+        <th scope="col">Ship-To</th>
+        <th scope="col">City</th>
+        <th scope="col">Country</th>
+        <th scope="col">Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for x in cust_list %}
+        <tr>
+          <!-- <th scope="row"></th> -->
+          <td><a href="{{ x.get_absolute_url }}">{{ x.soldToName|title }}</a></td>
+          <td>{{ x.shipToName|title }}</td>
+          <td>{{ x.shipToCity|title }}</td>
+          <td>{{ x.shipToCountry }}</td>
+          <td>{{ x.products }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- {% if cust_list %}
   <div class="container">
     <div class="card card-with-shadow" style="width: 28rem;">
       <ul class="list-group list-group-flush">
@@ -17,6 +45,8 @@
         {% for x in cust_list %}
           <li class="list-group-item">
             <a href="{{ x.get_absolute_url }}">{{ x.soldToName|title }}</a>
+            <p>{{ x.shipToName|title }}</p>
+            <p>{{ x.shipToCity|title }}</p>
           </li>
         {% endfor %}
 
@@ -29,6 +59,6 @@
     <p>You don't have any customer assigned.</p>
   </div>
 
-{% endif%}
+{% endif%} -->
 
 {% endblock %}

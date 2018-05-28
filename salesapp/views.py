@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, UpdateView
 # from reports.views import ReportsListView
-from salesapp.models import Customers
+from salesapp.models import Customers, SapBase
 
 def landing(request):
     return render(request, 'salesapp/landing.html')
@@ -38,9 +38,9 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('landing'))
 
 class CustomersListView(ListView):
-    queryset = Customers.objects.order_by('soldToName')
+    queryset = SapBase.objects.order_by('soldToName')
     context_object_name = 'cust_list'
-    model = Customers
+    model = SapBase
     template_name = 'salesapp/customer_list.html'
 
     def get_queryset(self):
@@ -48,10 +48,10 @@ class CustomersListView(ListView):
         return qs.filter(sellerNumber=self.request.user)
 
 class CustomersDetailView(DetailView):
-    model = Customers
+    model = SapBase
     context_object_name = 'cust_detail'
     template_name = 'salesapp/customer_detail.html'
 
 class CustomersUpdateView(UpdateView):
     fields = ('products', 'is_active', 'country')
-    model = Customers
+    model = SapBase

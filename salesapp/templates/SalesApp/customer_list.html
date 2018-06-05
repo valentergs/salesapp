@@ -10,6 +10,14 @@
 </div>
 
 <div class="container">
+
+  <form action="" method="GET">
+    <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+    <input type="submit" value="Search">
+  </form>
+
+  <br>
+
   <table class="table table-striped">
     <thead>
       <tr>

@@ -45,6 +45,9 @@ class CustomersListView(ListView):
 
     def get_queryset(self):
         qs = super(CustomersListView, self).get_queryset()
+        q = self.request.GET.get("q")
+        if q:
+            return qs.filter(soldToName__icontains=q, sellerNumber=self.request.user)
         return qs.filter(sellerNumber=self.request.user)
 
 class CustomersDetailView(DetailView):

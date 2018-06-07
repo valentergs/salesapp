@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, UpdateView
+from django.db.models import Q
 # from reports.views import ReportsListView
 from salesapp.models import Customers, SapBase
 
@@ -47,7 +48,11 @@ class CustomersListView(ListView):
         qs = super(CustomersListView, self).get_queryset()
         q = self.request.GET.get("q")
         if q:
-            return qs.filter(soldToName__icontains=q, sellerNumber=self.request.user)
+            return qs.filter(Q(soldToName__icontains=q)|
+                            Q(shipToName__icontains=q)|
+                            Q(shipToCountry__icontains=q)|
+                            Q(products__icontains=q), 
+                            sellerNumber=self.request.user)
         return qs.filter(sellerNumber=self.request.user)
 
 class CustomersDetailView(DetailView):

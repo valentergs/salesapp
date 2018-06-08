@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{ reports_detail.customer }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-8">
+    {% if reports_detail %}
+      {# <p>Customer: {{ cust_detail.sold_to_name }}</p> #}
+      <p><strong>Report Date: </strong>{{ reports_detail.created_at }}</p>
+      <p><strong>Visit Date: </strong>{{ reports_detail.visit_date }}</p>
+      <p><strong>Status: </strong>{{ reports_detail.status|safe }}</p>
+      <p><strong>Content: </strong>{{ reports_detail.content }}</p>
+    {% else %}
+      <p>No reports found.</p>
+    {% endif%}
+
+
+  </div>
+</div>
+
+{% endblock %}

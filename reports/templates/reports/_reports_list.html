@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="">
+    <a href="{% url 'reports:create' %}" class="btn btn-primary">Create Report</a>
+  </div>
+  <br>
+  {% if reports_list %}
+  <div class="col-md-10">
+    <table class="table table-hover">
+      <thead>
+        <th scope="col">Report date</th>
+        <th scope="col">Visit Date</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Content</th>
+        <th scope="col">Status</th>
+      </thead>
+      {% for x in reports_list %}
+      <tbody>
+        <tr>
+          <td><a href="{{ x.get_absolute_url }}">{{ x.created_at }}</a></td>
+          <td>{{x.visit_date}}</td>
+          <td>{{x.customer}}</td>
+          <td>{{x.content|truncatewords:5}}</td>
+          <td>{{x.status}}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+  {% endif %}
+
+
+</div>

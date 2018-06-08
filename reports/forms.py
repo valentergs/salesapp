@@ -1,12 +1,13 @@
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django import forms
-from reports import models
+from .models import Reports, SapBase
 
 class ReportsForm(forms.ModelForm):
     class Meta:
-        fields = ('author', 'customer', 'content', 'status', 'business',)
-        model = models.Reports
-        # widgets = {'visit_date': forms.DateInput()}
-        widgets = {'visit_date': forms.SelectDateWidget(),
-                    'business': forms.MultipleChoiceField(),
-        }
+        exclude = ['created_at']
+        model = Reports
+
+    def __init__(self, user, *args, **kwargs):
+        super(ReportsForm, self).__init__(*args, **kwargs)
+        self.fields['customer'].queryset = SapBase.objects.filter(sellerNumber=self.request.user)

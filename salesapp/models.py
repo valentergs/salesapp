@@ -28,6 +28,9 @@ class SapBase(models.Model):
     def get_absolute_url(self):
         return reverse('url_cust_detail', kwargs={'pk': self.pk})
 
+    def __str__(self):
+        return self.soldToName
+
 class Customers(SapBase):
     STATUS_CHOICES = (
     ('active', 'Active'),

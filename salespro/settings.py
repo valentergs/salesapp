@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'salesapp',
     'reports',
     'bootstrap4',
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

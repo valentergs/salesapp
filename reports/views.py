@@ -22,9 +22,9 @@ class AuthorReportMixin(AuthorMixin, LoginRequiredMixin):
     model = Reports
 
 class AuthorReportsEditMixin(AuthorReportMixin, AuthorEditMixin, LoginRequiredMixin):
-    fields = ['status', 'content']
     success_url = reverse_lazy('reports:list')
     template_name = 'reports/reports_form.html'
+    fields = ['customer', 'content', 'status', 'business']
 
 class ReportsListView(AuthorMixin, ListView):
     model = Reports
@@ -41,6 +41,7 @@ class ReportsDetailView(DetailView):
 class ReportsCreateView(AuthorReportsEditMixin, CreateView, PermissionRequiredMixin):
     permission_required = 'reports.add_reports'
     fields = ['customer', 'content', 'status', 'business']
+    # form_class = 'ReportsForm'
 
 class ReportsUpdateView(AuthorEditMixin, UpdateView, PermissionRequiredMixin):
     permission_required = 'reports.change_reports'

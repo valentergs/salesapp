@@ -34,6 +34,15 @@ class Reports(models.Model):
     def get_absolute_url(self):
         return reverse('reports:details', kwargs={'username': self.author.username, 'pk': self.pk})
 
+    def __init__(self, *args, **kwargs):
+        super(Reports, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        if instance and instance.pk:
+            # for field in self.fields:
+            #     self.fields[field].widget.attrs['disabled'] = True
+            # set initial values
+            self.fields['author'].initial = instance.user.last_name
+
     class Meta:
         ordering = ['-created_at']
         verbose_name_plural = 'Reports'

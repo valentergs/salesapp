@@ -13,9 +13,10 @@
     {% if reports_detail %}
       {# <p>Customer: {{ cust_detail.sold_to_name }}</p> #}
       <p><strong>Report Date: </strong>{{ reports_detail.created_at }}</p>
-      <p><strong>Visit Date: </strong>{{ reports_detail.visit_date }}</p>
+      <p><strong>Author: </strong>{{ reports_detail.author.get_full_name }}</p>
       <p><strong>Status: </strong>{{ reports_detail.status|safe }}</p>
-      <p><strong>Content: </strong>{{ reports_detail.content }}</p>
+      <p><strong>Business: </strong>{{ reports_detail.business|safe }}</p>
+      <p><strong></strong>{{ reports_detail.content }}</p>
     {% else %}
       <p>No reports found.</p>
     {% endif%}

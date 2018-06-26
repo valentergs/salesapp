@@ -5,7 +5,7 @@ from .models import Reports, SapBase
 
 class ReportsForm(forms.ModelForm):
     class Meta:
-        fields = ['customer', 'content', 'status', 'business']
+        fields = ['customer', 'subject', 'atendees', 'content', 'status', 'business']
         model = Reports
 
     def __init__(self, user=None, *args, **kwargs):

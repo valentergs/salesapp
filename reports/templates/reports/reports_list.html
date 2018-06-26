@@ -11,12 +11,12 @@
 
   <div class="container">
 
-    <form action="" method="GET">
+    {% comment %} <form action="" method="GET">
       <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
       <input type="submit" value="Search">
     </form>
 
-    <br>
+    <br> {% endcomment %}
 
     <div class="">
       <a href="{% url 'reports:create' %}" class="btn btn-primary">Create Report</a>
@@ -28,7 +28,7 @@
         <thead>
           <th scope="col">Report date</th>
           <th scope="col">Customer</th>
-          <th scope="col">Content</th>
+          <th scope="col">Subject</th>
           <th scope="col">Status</th>
         </thead>
         {% for x in reports_list %}
@@ -36,7 +36,7 @@
           <tr>
             <td><a href="{{ x.get_absolute_url }}">{{ x.created_at }}</a></td>
             <td>{{x.customer}}</td>
-            <td>{{x.content|truncatewords:5 }}</td>
+            <td>{{x.subject|truncatewords:5 }}</td>
             <td>{{x.status|title }}</td>
           </tr>
         </tbody>

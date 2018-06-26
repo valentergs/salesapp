@@ -42,7 +42,6 @@ class ReportsDetailView(DetailView):
 
 class ReportsCreateView(AuthorReportsEditMixin, CreateView, PermissionRequiredMixin):
     permission_required = 'reports.add_reports'
-    # fields = ['customer', 'content', 'status', 'business']
     form_class = ReportsForm
 
     def get_form_kwargs(self):

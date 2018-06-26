@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from reports.models import Reports
+from reports.forms import ReportsForm
 
 
 class AuthorMixin(object):
@@ -25,7 +26,7 @@ class AuthorReportMixin(AuthorMixin, LoginRequiredMixin):
 class AuthorReportsEditMixin(AuthorReportMixin, AuthorEditMixin, LoginRequiredMixin):
     success_url = reverse_lazy('reports:list')
     template_name = 'reports/reports_form.html'
-    fields = ['customer', 'content', 'status', 'business']
+    # fields = ['customer', 'content', 'status', 'business']
 
 class ReportsListView(AuthorMixin, ListView):
     model = Reports
@@ -41,8 +42,13 @@ class ReportsDetailView(DetailView):
 
 class ReportsCreateView(AuthorReportsEditMixin, CreateView, PermissionRequiredMixin):
     permission_required = 'reports.add_reports'
-    fields = ['customer', 'content', 'status', 'business']
-    # form_class = 'ReportsForm'
+    # fields = ['customer', 'content', 'status', 'business']
+    form_class = ReportsForm
+
+    def get_form_kwargs(self):
+        kwargs = super(ReportsCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 class ReportsUpdateView(AuthorEditMixin, UpdateView, PermissionRequiredMixin):
     permission_required = 'reports.change_reports'

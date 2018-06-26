@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'dal',
     'dal_select2',
+    'crispy_forms', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

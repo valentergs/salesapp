@@ -53,7 +53,7 @@ class ReportsUpdateView(AuthorEditMixin, UpdateView, PermissionRequiredMixin):
     permission_required = 'reports.change_reports'
     template_name = 'reports/reports_update_form.html'
     form_class = ReportsForm
-    success_url = '/reports/' 
+    # success_url = '/reports/' 
 
     def get_form_kwargs(self):
         kwargs = super(ReportsUpdateView, self).get_form_kwargs()
@@ -65,5 +65,5 @@ class ReportsUpdateView(AuthorEditMixin, UpdateView, PermissionRequiredMixin):
 
 class ReportsDeleteView(AuthorReportsEditMixin, DeleteView, PermissionRequiredMixin):
     template_name = 'reports/reports_delete.html'
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('reports:list')
     permission_required = 'reports.delete_reports'

@@ -12,5 +12,5 @@ urlpatterns = [
     path('details/<username>/<int:pk>/', ReportsDetailView.as_view(), name='details'),
     path('create/', ReportsCreateView.as_view(), name='create'),
     path('details/<username>/<int:pk>/update/', ReportsUpdateView.as_view(), name='update'),
-    path('delete/by/<username>/<int:pk>', ReportsDeleteView.as_view(), name='delete'),
+    path('details/<username>/<int:pk>/delete/', ReportsDeleteView.as_view(), name='delete'),
 ]

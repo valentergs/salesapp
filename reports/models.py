@@ -21,7 +21,8 @@ class Reports(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
-    created_at =    models.DateField(auto_now_add=True)
+    created_at =    models.DateTimeField(auto_now_add=True)
+    updated_at =    models.DateTimeField(auto_now=True, blank=True, null=True)
     author =        models.ForeignKey(User, related_name='reports', on_delete=models.CASCADE)
     customer =      models.ForeignKey(SapBase, related_name='reports', on_delete=models.CASCADE)
     subject =       models.CharField(max_length=250, blank=True, null=True)

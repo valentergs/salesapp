@@ -1,4 +1,8 @@
 /* INCLUDES/NAV.HTML */
+body {
+  font-size: 0.9em;
+}
+
 span.navbar-item a{
   font-size: 12px;
 }

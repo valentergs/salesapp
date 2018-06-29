@@ -10,6 +10,11 @@
 
 <div class="container">
   <div class="col-md-8">
+
+      <div class="">
+          <a href="{% url 'reports:update' username=reports_detail.author pk=reports_detail.pk %}" class="btn btn-primary">Edit</a>
+      </div>
+      <br>
     {% if reports_detail %}
       {# <p>Customer: {{ cust_detail.sold_to_name }}</p> #}
       <p><strong>Report Date: </strong>{{ reports_detail.created_at }}</p>
@@ -22,7 +27,6 @@
     {% else %}
       <p>No reports found.</p>
     {% endif%}
-
 
   </div>
 </div>
